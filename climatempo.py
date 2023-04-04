@@ -5,8 +5,7 @@ from selenium.webdriver.chrome.options import Options
 # Instancia o driver do chrome e desabilita os logs
 chrome_options = Options()
 chrome_options.add_argument("headless")
-chrome_options.add_argument("--disable-logging")
-chrome_options.add_argument("--log-level=3")
+chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 driver = webdriver.Chrome(options=chrome_options)
 
 # Entra no site do google e procura todas as informações necessarias
@@ -24,7 +23,7 @@ tempo = driver.find_element('xpath','//*[@id="wob_dts"]').text
 time.sleep(1)
 
 print(f"Temperatura: {temperatura}°C   🏙 Cidade: {cidadenome}")
-print(f"\u2B06 Minima: {tempmin} \u2B07 Maxima: {tempmax}")
+print(f"\u2B06 Minima: {tempmin}° \u2B07 Maxima: {tempmax}°")
 print("\u2614 Chuva: " + chuva)
 print("🍃 Vento: " + vento)
 print("Umidade: " + umidade)
