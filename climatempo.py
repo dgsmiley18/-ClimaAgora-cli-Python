@@ -15,17 +15,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 html = requests.get(f"https://www.google.com/search?q=clima+agora+{args.local}", headers=headers).content
 soup = BeautifulSoup(html, 'html.parser')
 body = soup.find("body")
-'''
-cidadenome = driver.find_element('xpath','//*[@id="oFNiHe"]/div/div/div/div[1]/span[2]').text
-tempmin = driver.find_element('xpath','//*[@id="wob_dp"]/div[1]/div[3]/div[2]/span[1]').text
-tempmax = driver.find_element('xpath','//*[@id="wob_dp"]/div[1]/div[3]/div[1]/span[1]').text
-chuva = driver.find_element('xpath','//*[@id="wob_pp"]').text
-vento = driver.find_element('xpath', '//*[@id="wob_ws"]').text
-umidade = driver.find_element('xpath','//*[@id="wob_hm"]').text
-temperatura = driver.find_element('xpath','//*[@id="wob_tm"]').text
-infohoje = driver.find_element('xpath','//*[@id="wob_dc"]').text
-tempo = driver.find_element('xpath','//*[@id="wob_dts"]').text
-'''
+
 time.sleep(1)
 
 cidadenome = soup.find("span", class_="BBwThe").text
