@@ -1,4 +1,5 @@
 import time
+import argparse
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -8,9 +9,15 @@ chrome_options.add_argument("headless")
 chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 driver = webdriver.Chrome(options=chrome_options)
 
+# Instancia o ArgumentParser
+parser = argparse.ArgumentParser(prog='ClimaTempo',description="Veja o clima de hoje direto do seu terminal!")
+
+# Adiciona o argumento "--local" com explicação
+parser.add_argument('-l', '--local', help='especifique um local', required=True)
+args = parser.parse_args()
+
 # Entra no site do google e procura todas as informações necessarias
-estado = input("Digite o nome do seu estado: ")
-driver.get("https://www.google.com/search?q=clima+agora+"+estado.replace(" ","+"))
+driver.get("https://www.google.com/search?q=clima+agora+"+args.local.replace(" ","+"))
 cidadenome = driver.find_element('xpath','//*[@id="oFNiHe"]/div/div/div/div[1]/span[2]').text
 tempmin = driver.find_element('xpath','//*[@id="wob_dp"]/div[1]/div[3]/div[2]/span[1]').text
 tempmax = driver.find_element('xpath','//*[@id="wob_dp"]/div[1]/div[3]/div[1]/span[1]').text
