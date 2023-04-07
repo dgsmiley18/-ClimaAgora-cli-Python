@@ -19,6 +19,15 @@ def pegar_tempo_info(local):
     umidade = soup.select_one("#wob_hm").text
     info_hoje = soup.select_one("#wob_dc").text
     tempo = soup.select_one("#wob_dts").text.capitalize()
+    try:
+        tipo_alerta = soup.select_one(".vk_h").text
+        alerta_hora = soup.select_one("div.Uekwlc:nth-child(3)").text
+        mais_info = soup.select_one("div.Uekwlc:nth-child(5) > a:nth-child(1)").text
+    except:
+        tipo_alerta = "Alerta: Nenhum"
+        alerta_hora = ""
+        mais_info = ""
+
 
     return {
         "cidade_nome": cidade_nome,
@@ -29,7 +38,10 @@ def pegar_tempo_info(local):
         "vento": vento,
         "umidade": umidade,
         "info_hoje": info_hoje,
-        "tempo": tempo
+        "tempo": tempo,
+        "tipo_alerta": tipo_alerta,
+        "alerta_hora": alerta_hora,
+        "mais_info": mais_info
     }
 
 if __name__ == "__main__":
@@ -42,10 +54,14 @@ if __name__ == "__main__":
 
     # Mostra as informações na tela
     info = pegar_tempo_info(args.local)
-    print(f"Temperatura: {info['temperatura']}°C   🏙 Cidade: {info['cidade_nome']}")
+    print(f"🏙 Cidade: {info['cidade_nome']}")
+    print(f"🌡️ Temperatura: {info['temperatura']}°C")
     print(f"\u2B06 Minima: {info['temp_min']}° \u2B07 Maxima: {info['temp_max']}°")
     print("\u2614 Chuva: " + info['chuva'])
     print("🍃 Vento: " + info['vento'])
     print("Umidade: " + info['umidade'])
     print("Situação Hoje: " + info['info_hoje'])
     print(info['tempo'])
+    print("\033[33m{}\033[0m".format(info['tipo_alerta']))
+    print("\033[33m{}\033[0m".format(info["alerta_hora"]))
+    print("\033[33m{}\033[0m".format(info["mais_info"]))
