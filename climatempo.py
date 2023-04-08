@@ -1,7 +1,5 @@
-import time
+import time, requests, argparse
 from bs4 import BeautifulSoup
-import requests
-import argparse
 
 def pegar_tempo_info(local):
     # Entra no site do google e procura todas as informações necessárias
@@ -22,12 +20,9 @@ def pegar_tempo_info(local):
     try:
         tipo_alerta = soup.select_one(".vk_h").text
         alerta_hora = soup.select_one("div.Uekwlc:nth-child(3)").text
-        mais_info = soup.select_one("div.Uekwlc:nth-child(5) > a:nth-child(1)").text
     except:
         tipo_alerta = "Alerta: Nenhum"
         alerta_hora = ""
-        mais_info = ""
-
 
     return {
         "cidade_nome": cidade_nome,
@@ -40,8 +35,7 @@ def pegar_tempo_info(local):
         "info_hoje": info_hoje,
         "tempo": tempo,
         "tipo_alerta": tipo_alerta,
-        "alerta_hora": alerta_hora,
-        "mais_info": mais_info
+        "alerta_hora": alerta_hora
     }
 
 if __name__ == "__main__":
@@ -64,4 +58,3 @@ if __name__ == "__main__":
     print(info['tempo'])
     print("\033[33m{}\033[0m".format(info['tipo_alerta']))
     print("\033[33m{}\033[0m".format(info["alerta_hora"]))
-    print("\033[33m{}\033[0m".format(info["mais_info"]))
