@@ -1,43 +1,43 @@
 
-# ClimaAgora-cli-Python
+# WeatherNow-cli-Python
 
-Clima de hoje agora no seu terminal!
+See today's weather directly from your terminal!
 
 
 ## Screenshots
 
-![App Screenshot](https://i.imgur.com/DAzYqY2.png)
+![App Screenshot](https://i.imgur.com/2jReSZB.png)
 
 
-## Instalação
+## Installation
 
-Instale o ClimaAgora-cli-Python pelo Git
+Install WeatherNow-cli-Python from Git
 
 ```bash
-  git clone https://github.com/dgsmiley18/ClimaAgora-cli-Python.git
-  cd ClimaAgora-cli-Python
+  git clone https://github.com/dgsmiley18/WeatherNow-cli-Python.git
+  cd WeatherNow-cli-Python
   pip install -r requirements.txt
 ```
     
-## Uso/Exemplos
+## Use/Examples
 
 ```bash
-climatempo -h
-climatempo -l "estado"
+weathernow -h
+weathernow -l "state"
 ```
 
 
-## Licença
+## License
 
 [GPL3](https://choosealicense.com/licenses/gpl-3.0//)
 
 
-## Autores
+## Authors
 
 - [@dgsmiley18](https://github.com/dgsmiley18)
 
 
-## Aprendizados
+## Learnings
 
-Com esse projeto estou aprendendo a usar o requests e o BeautifulSoup para Web Scraping simples de forma mais rápida que o selenium
+With this project I'm learning to use requests and BeautifulSoup for simple Web Scraping faster than selenium
 
